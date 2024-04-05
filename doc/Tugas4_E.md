@@ -14,17 +14,14 @@ Anggota:
 ### Kasus A
 #### Kelemahan
 #### Serangan
-#### Flag
 #### Test Case
 ### Kasus B
 #### Kelemahan
 #### Serangan
-#### Flag
 #### Test Case
 ### Kasus C
 #### Kelemahan
 #### Serangan
-#### Flag
 #### Test Case
 ### Kasus D
 #### Kelemahan
@@ -32,13 +29,12 @@ Kelamahan pada Kasus D adalah nilai kunci enkripsi (**e**) yang kecil, yakni han
 #### Serangan
 1. Dapatkan Nilai **n**, **e**, dan **c**.
 2. Pangkatkan **c** dengan **1/e**. Karena di kasus ini diketahui **e=3**, maka kita bisa langsung akar kubikkan saja dengan bantuan fungsi **cbrt** dari pustaka **sympy** agar cepat.
-#### Flag
 #### Test Case
 ### Kasus E
 #### Kelemahan
 #### Serangan
-#### Flag
 #### Test Case
+### Flag
 ### Tautan Solusi
 - Tautan Repositori: [GitHub](https://github.com/dawetmaster/IF4020-not-a-cryptanalysis)
 - Solver Bagian A berada di `src/solver_A.py`.
