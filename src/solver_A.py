@@ -30,9 +30,6 @@ def set_context(mode:str)->pwn.remote|pwn.process:
     return pwn.process([PYTHON_TYPE,"source_A.py"])
 
 if __name__=="__main__":
-  # c = int(input("c:"))
-  # m = solve_D(c)
-  # print(m.to_bytes(21,'big'))
   context:pwn.remote | pwn.process = set_context(CONTEXT)
 
   # iteration
