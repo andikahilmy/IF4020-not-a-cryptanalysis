@@ -40,5 +40,7 @@ Kelamahan pada Kasus D adalah nilai kunci enkripsi (**e**) yang kecil, yakni han
 #### Flag
 #### Test Case
 ### Tautan Solusi
+- Tautan Repositori: [GitHub](https://github.com/dawetmaster/IF4020-not-a-cryptanalysis)
+- Solver Bagian A berada di `src/solver_A.py`.
 ## Bagian B
 
