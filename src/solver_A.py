@@ -2,6 +2,7 @@ from sympy import cbrt
 import pwn
 from dotenv import load_dotenv
 import os
+from Crypto.Util.number import inverse
 
 # Note: Cuma bisa di Linux (Windows gak support modul pwn)
 
@@ -24,9 +25,11 @@ def solve_D(c:int)->int:
   m = cbrt(c)
   return int(m)
 
-def solve_E()->int:
-  # dummy
-  return 1
+def solve_E(c:int,n:int,e:int)->int:
+  tot_n = n-1
+  d = inverse(e,tot_n)
+  m = pow(c,d,n)
+  return m
 
 def set_context(mode:str)->pwn.remote|pwn.process:
   #mode: 'local','remote'
@@ -98,7 +101,7 @@ if __name__=="__main__":
     elif(paket_soal=="D"):
       payload = solve_D(c).to_bytes(21,'big')
     elif(paket_soal=="E"):
-      payload = solve_E().to_bytes(21,'big')
+      payload = solve_E(c,n,e).to_bytes(21,'big')
     else:
       context.close()
       raise ValueError("Mode Hanya Terdiri dari A hingga E saja")

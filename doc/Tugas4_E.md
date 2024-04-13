@@ -32,7 +32,11 @@ Kelamahan pada Kasus D adalah nilai kunci enkripsi (**e**) yang kecil, yakni han
 #### Test Case
 ### Kasus E
 #### Kelemahan
+Kelemahan pada Kasus E adalah nilai **n** adalah bilangan prima, sehingga untuk mendapatkan totien n tinggal kurangkan saja **n** dengam 1. Jika totien **n** sudah didapat, _inverse modulo_-kan saja dengan **e** untuk mendapatkan kunci dekripsi.
 #### Serangan
+1. Dapatkan Nilai **n**, **e**, dan **c**.
+2. Kurangan **n** dengan **1** untuk mendapatkan totien n.
+3. _Inverse modulo_-kan **e** dengan modulo totien n. Hasil **inverse** merupakan kunci dekripsi.
 #### Test Case
 ### Flag
 ### Tautan Solusi
