@@ -1,17 +1,27 @@
-from sympy import cbrt
+from sympy import cbrt, prevprime
 import pwn
 from dotenv import load_dotenv
 import os
-from Crypto.Util.number import inverse
+from Crypto.Util.number import *
+from math import isqrt
 
 # Note: Cuma bisa di Linux (Windows gak support modul pwn)
 
 CONTEXT = 'local'
 PYTHON_TYPE = 'python3' 
 
-def solve_A()->int:
-  # dummy
-  return 1
+def solve_A(c: int, n: int, e: int)->int:
+  sqrt_n = isqrt(n)
+  print("sqrt_n=", sqrt_n)
+  p = prevprime(sqrt_n)
+  q = n // p
+  while GCD(e, (p-1)*(q-1)) != 1:
+    p = prevprime(p)
+    q = n // p
+
+  d = inverse(e, (p-1)*(q-1))
+  m = pow(c,d,n)
+  return m
 
 def solve_B()->int:
   # dummy
@@ -31,7 +41,7 @@ def solve_E(c:int,n:int,e:int)->int:
   m = pow(c,d,n)
   return m
 
-def set_context(mode:str)->pwn.remote|pwn.process:
+def set_context(mode:str)->pwn.remote | pwn.process:
   #mode: 'local','remote'
   if(mode=='remote'):
     # Kalau remote, load .env untuk dapetin server token
@@ -93,7 +103,7 @@ if __name__=="__main__":
     # bikin payload
     payload = ""
     if(paket_soal=="A"):
-      payload = solve_A().to_bytes(21,'big')
+      payload = long_to_bytes(solve_A(c,n,e))
     elif(paket_soal=="B"):
       payload = solve_B().to_bytes(21,'big')
     elif(paket_soal=="C"):
