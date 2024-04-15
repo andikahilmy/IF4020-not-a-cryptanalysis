@@ -36,7 +36,7 @@ Hal yang sama berlaku pada pembangkitan nilai **q**. Karena nilai **q** hanya me
 
 1. Cari akar kuadrat dari **n** dengan menggunakan fungsi **isqrt** dari pustaka **math**. Untuk tahap berikutnya nilai ini akan disebut sebagai **sqrt_n**.
 2. Hitung beberapa nilai prima terdekat dari **sqrt_n** menggunakan fungsi **nextprime** dan **prevprime** dari pustaka **sympy**. Pada program solver, diambil bilangan prima yang lebih kecil dari **sqrt_n** sebagai nilai **p** yang potensial.
-3. Dari setiap kemungkinan nilai **p**, hitung nilai **q** yang bersesuaian dengan `p * q = n` dan `GCD(e, (p-1)*(q-1) == 1)`.
+3. Dari setiap kemungkinan nilai **p**, hitung nilai **q** yang bersesuaian dengan `p * q = n` dan `GCD(e, (p-1)*(q-1)) == 1`.
 
 #### Test Case
 
@@ -44,7 +44,13 @@ Hal yang sama berlaku pada pembangkitan nilai **q**. Karena nilai **q** hanya me
 
 #### Kelemahan
 
+Kasus B memiliki kelemahan yang mirip dengan kasus A, yaitu nilai **n** yang diambil hanya dari nilai **p** kuadrat. Melalui informasi ini, **totient n** dapat dengan mudah dihitung.
+
 #### Serangan
+
+1. Cari nilai **p** yaitu akar kuadrat dari **n**
+2. Karena dalam kasus ini `p = q`, **totient n** dapat dihitung dengan menggunakan persamaan `phi(n) = (p-1) * p`
+3. Kunci dekripsi kemudian dapat dihitung dengan melakukan inverse **e** dimodulokan dengan **phi(n)**
 
 #### Test Case
 

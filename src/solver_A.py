@@ -1,9 +1,9 @@
-from sympy import cbrt, prevprime
-import pwn
-from dotenv import load_dotenv
 import os
-from Crypto.Util.number import *
 from math import isqrt
+import pwn
+from Crypto.Util.number import *
+from dotenv import load_dotenv
+from sympy import (cbrt, prevprime)
 
 # Note: Cuma bisa di Linux (Windows gak support modul pwn)
 
@@ -12,7 +12,6 @@ PYTHON_TYPE = 'python3'
 
 def solve_A(c: int, n: int, e: int)->int:
   sqrt_n = isqrt(n)
-  print("sqrt_n=", sqrt_n)
   p = prevprime(sqrt_n)
   q = n // p
   while GCD(e, (p-1)*(q-1)) != 1:
@@ -23,9 +22,11 @@ def solve_A(c: int, n: int, e: int)->int:
   m = pow(c,d,n)
   return m
 
-def solve_B()->int:
-  # dummy
-  return 1
+def solve_B(c: int, n: int, e: int)->int:
+  p = isqrt(n)
+  d = inverse(e, (p-1)*p)
+  m = pow(c,d,n)
+  return m
 
 def solve_C()->int:
   # dummy
@@ -105,7 +106,7 @@ if __name__=="__main__":
     if(paket_soal=="A"):
       payload = long_to_bytes(solve_A(c,n,e))
     elif(paket_soal=="B"):
-      payload = solve_B().to_bytes(21,'big')
+      payload = long_to_bytes(solve_B(c,n,e))
     elif(paket_soal=="C"):
       payload = solve_C().to_bytes(21,'big')
     elif(paket_soal=="D"):
