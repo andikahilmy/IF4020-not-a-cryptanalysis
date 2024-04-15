@@ -28,9 +28,16 @@ def solve_B(c: int, n: int, e: int)->int:
   m = pow(c,d,n)
   return m
 
-def solve_C()->int:
-  # dummy
-  return 1
+def solve_C(c: int, n: int)->int:
+  e_range = range(2**15, 2**16)
+  for i in e_range:
+    message = pow(c,i,n)
+    message = long_to_bytes(message)
+    # check if message starts with 'KRIPTOGRAFIITB{'
+    if message.startswith(b'KRIPTOGRAFIITB{'):
+      break
+  m = pow(c, i , n)
+  return m
 
 def solve_D(c:int)->int:
   m = cbrt(c)
@@ -108,7 +115,7 @@ if __name__=="__main__":
     elif(paket_soal=="B"):
       payload = long_to_bytes(solve_B(c,n,e))
     elif(paket_soal=="C"):
-      payload = solve_C().to_bytes(21,'big')
+      payload = long_to_bytes(solve_C(c,n))
     elif(paket_soal=="D"):
       payload = solve_D(c).to_bytes(21,'big')
     elif(paket_soal=="E"):

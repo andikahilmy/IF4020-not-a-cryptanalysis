@@ -58,7 +58,12 @@ Kasus B memiliki kelemahan yang mirip dengan kasus A, yaitu nilai **n** yang dia
 
 #### Kelemahan
 
+Pada Kasus C, nilai **d** digunakan untuk mengenkripsi pesan, maka diperlukan **e** untuk mendekripsi pesan. Sementara itu, nilai **e** berada pada range [2<sup>15</sup> , 2<sup>16</sup>] sehingga hanya terdapat 32768 kemungkinan dan mudah untuk diiterasikan.
+
 #### Serangan
+
+1. Lakukan iterasi nilai **e** dari 2<sup>15</sup>
+2. Dekripsi pesan dengan nilai **e** yang telah didapatkan. Jika hasil dekripsi dimulai dengan 'KRIPTOGRAFIITB{', hentikan iterasi.
 
 #### Test Case
 
