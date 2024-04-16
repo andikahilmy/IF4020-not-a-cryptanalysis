@@ -24,6 +24,9 @@ try:
         p = nextprime(getStrongPrime(1024) - ran)
         q = nextprime(nextprime(nextprime(nextprime(p) + ran) + ran) - ran)
         n = p * q
+        print("p = ", p)
+        print("q = ", q)
+        print("n = ", n)
         e = 65537
         check = GCD(e, (p-1)*(q-1)) == 1
         if check: break

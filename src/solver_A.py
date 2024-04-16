@@ -3,7 +3,7 @@ from math import isqrt
 import pwn
 from Crypto.Util.number import *
 from dotenv import load_dotenv
-from sympy import (cbrt, prevprime)
+from sympy import (cbrt, prevprime, isprime)
 
 # Note: Cuma bisa di Linux (Windows gak support modul pwn)
 
@@ -14,7 +14,7 @@ def solve_A(c: int, n: int, e: int)->int:
   sqrt_n = isqrt(n)
   p = prevprime(sqrt_n)
   q = n // p
-  while GCD(e, (p-1)*(q-1)) != 1:
+  while GCD(e, (p-1)*(q-1)) != 1 or not isprime(q):
     p = prevprime(p)
     q = n // p
 
