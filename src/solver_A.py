@@ -117,9 +117,9 @@ if __name__=="__main__":
     elif(paket_soal=="C"):
       payload = long_to_bytes(solve_C(c,n))
     elif(paket_soal=="D"):
-      payload = solve_D(c).to_bytes(21,'big')
+      payload = long_to_bytes(solve_D(c))
     elif(paket_soal=="E"):
-      payload = solve_E(c,n,e).to_bytes(21,'big')
+      payload = long_to_bytes(solve_E(c,n,e))
     else:
       context.close()
       raise ValueError("Mode Hanya Terdiri dari A hingga E saja")
