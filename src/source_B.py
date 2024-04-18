@@ -14,7 +14,6 @@ def main():
   while GCD(e, tot) != 1:
     e = random.randint(2**15, 2**16)
   d = pow(e, -1, tot)
-
   nomor_arsip_admin = random.randint(2, 100000000)
   while isPrime(nomor_arsip_admin):
     nomor_arsip_admin = random.randint(2, 100000000)
@@ -50,7 +49,7 @@ def main():
           nomor_arsip = input().strip("\n")
           plain_nomor_arsip = pow(int(nomor_arsip), d, n)
           print(f"Isi arsip: {arsip[int(plain_nomor_arsip)]}")
-        except Exception as e:
+        except Exception as er:
           print("Token akses nomor arsip invalid")
       elif perintah == "3":
         print(f"Nomor arsip admin: {nomor_arsip_admin}")
@@ -58,7 +57,8 @@ def main():
         exit()
       else:
         print("Perintah tidak dikenal")
-  except Exception as e:
+  except Exception as er:
+    print(er)
     print("Terjadi kesalahan")
 
 if __name__ == "__main__":
