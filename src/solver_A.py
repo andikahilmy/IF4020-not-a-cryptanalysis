@@ -7,7 +7,7 @@ from sympy import (cbrt, prevprime, isprime)
 
 # Note: Cuma bisa di Linux (Windows gak support modul pwn)
 
-CONTEXT = 'local'
+CONTEXT = 'remote'
 PYTHON_TYPE = 'python3' 
 
 def solve_A(c: int, n: int, e: int)->int:
@@ -69,7 +69,6 @@ if __name__=="__main__":
     print(context.recvline(keepends=False))
     #Masukkan token
     token = os.getenv("SERVER_TOKEN")
-    print(token)
     context.sendline(token)
   # skip pesan awalnya
   if(CONTEXT=="remote"):

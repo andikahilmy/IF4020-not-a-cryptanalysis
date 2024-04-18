@@ -25,11 +25,9 @@ if __name__=="__main__":
     print(context.recvline(keepends=False))
     #Masukkan token
     token = os.getenv("SERVER_TOKEN")
-    print(token)
-    context.sendline(token)
+    context.sendline(token.encode('utf-8'))
   # tunggu prompt
-  if(CONTEXT=="local"):
-    context.recvuntil(b"Masukkan perintah: ")
+  context.recvuntil(b"Masukkan perintah: ")
   # Dapatkan nomor arsip admin
   context.sendline(b'3')
   # Dapetin nomor arsip
@@ -44,7 +42,10 @@ if __name__=="__main__":
   # kirim opsi memasukkan
   context.sendline(b'1')
   # tunggu prompt
-  context.recvline()
+  if(CONTEXT=='remote'):
+    context.recvuntil(b'Masukkan nomor arsip (dalam bentuk integer): ')
+  else:
+    context.recvline()
   # kirim faktor_1
   context.sendline(str(factor_1).encode('utf-8'))
   # tunggu prompt
@@ -59,7 +60,10 @@ if __name__=="__main__":
   # kirim opsi memasukkan
   context.sendline(b'1')
   # tunggu prompt
-  context.recvline()
+  if(CONTEXT=='remote'):
+    context.recvuntil(b'Masukkan nomor arsip (dalam bentuk integer): ')
+  else:
+    context.recvline()
   # kirim faktor_2
   context.sendline(str(factor_2).encode('utf-8'))
   # tunggu prompt
